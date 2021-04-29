@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/webpages/youtubeplayer">
+        <file>concrete-youtube-player.html</file>
+    </qresource>
+</RCC>

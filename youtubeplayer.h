@@ -9,8 +9,6 @@ class YoutubePlayer : public QWebEngineView
     Q_OBJECT
 public:
     explicit YoutubePlayer(QWidget *parent = nullptr);
-private:
-    YoutubeVideoState createFromTitle(QString title);
 signals:
     void youtubeDataUpdated(const YoutubeVideoState& data);
 };

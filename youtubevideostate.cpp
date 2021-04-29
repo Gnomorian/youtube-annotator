@@ -49,8 +49,7 @@ YoutubeVideoState YoutubeVideoState::makeFromDelimitedString(const QString& data
 
     if(splits.size() != NumberOfProperties)
     {
-        const QString errorMessageTemplate{"YoutubeVideoState requires %1 enteries in a delimited string, '%2' was provided."};
-        throw std::exception{errorMessageTemplate.arg(NumberOfProperties).arg(data).toStdString().data()}; // cauh, that was long winded...
+        return YoutubeVideoState{};
     }
 
     const int PlayerState{getPropertyIndex("PlayerState").toInt()};
