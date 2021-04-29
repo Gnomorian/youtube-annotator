@@ -12,12 +12,14 @@ SOURCES += \
     annotationlist.cpp \
     main.cpp \
     mainwindow.cpp \
+    webpagefactory.cpp \
     youtubeplayer.cpp \
     youtubevideostate.cpp
 
 HEADERS += \
     annotationlist.h \
     mainwindow.h \
+    webpagefactory.h \
     youtubeplayer.h \
     youtubevideostate.h
 
