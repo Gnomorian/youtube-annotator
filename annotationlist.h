@@ -17,7 +17,7 @@ public:
     explicit AnnotationList(QWidget *parent = nullptr);
     void addAnnotation(YoutubeVideoState& data);
 signals:
-
+    void annotationClicked(const YoutubeVideoState& annotation);
 };
 
 #endif // ANNOTATIONLIST_H

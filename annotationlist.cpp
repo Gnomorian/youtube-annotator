@@ -3,7 +3,15 @@
 
 AnnotationList::AnnotationList(QWidget *parent) : QListWidget(parent)
 {
-
+    connect(
+        this,
+        &QListWidget::itemActivated,
+        this,
+        [=](const QListWidgetItem* item)
+        {
+            emit annotationClicked(dynamic_cast<const AnnotationListItem*>(item)->myState);
+        }
+    );
 }
 
 void AnnotationList::addAnnotation(YoutubeVideoState &data)

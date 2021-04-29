@@ -19,7 +19,6 @@ public:
 private slots:
     void on_btnAnnotate_clicked();
     void onYoutubeData(const YoutubeVideoState& data);
-
 private:
     Ui::MainWindow *ui;
     YoutubeVideoState latestVideoState;

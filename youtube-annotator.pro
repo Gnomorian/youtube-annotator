@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     webpagefactory.cpp \
+    youtubeannotationstore.cpp \
     youtubeplayer.cpp \
     youtubevideostate.cpp
 
@@ -22,6 +23,7 @@ HEADERS += \
     annotationlistitem.h \
     mainwindow.h \
     webpagefactory.h \
+    youtubeannotationstore.h \
     youtubeplayer.h \
     youtubevideostate.h
 
