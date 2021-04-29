@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     annotationlist.cpp \
+    annotationlistitem.cpp \
     main.cpp \
     mainwindow.cpp \
     webpagefactory.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
 
 HEADERS += \
     annotationlist.h \
+    annotationlistitem.h \
     mainwindow.h \
     webpagefactory.h \
     youtubeplayer.h \
