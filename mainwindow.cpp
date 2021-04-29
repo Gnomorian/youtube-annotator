@@ -18,10 +18,11 @@ MainWindow::~MainWindow()
 void MainWindow::on_btnAnnotate_clicked()
 {
     //TODO: add an annotation for current video at current video position
-
+    ui->listAnnotations->addAnnotation(latestVideoState);
 }
 
 void MainWindow::onYoutubeData(const YoutubeVideoState &data)
 {
-    ui->statusbar->showMessage(QString("%1 at %2").arg(data.videoUrlAsString()).arg(data.PlayerDuration));
+    latestVideoState = data;
+    ui->statusbar->showMessage(QString("%1 at %2").arg(data.videoUrlAsString()).arg(data.PlayerDuration()));
 }

@@ -12,11 +12,11 @@
 enum IFrameVideoState
 {
     Unstarted   = -1,
-    Ended       = 0,
-    Playing     = 1,
-    Paused      = 2,
-    Buffering   = 3,
-    VideoCued   = 5
+    Ended       =  0,
+    Playing     =  1,
+    Paused      =  2,
+    Buffering   =  3,
+    VideoCued   =  5
 };
 
 
@@ -25,8 +25,9 @@ enum IFrameVideoState
  * a structure for the YoutubePlayer to communicate the state of the video
  * that it is currently displaying.
  */
-struct YoutubeVideoState
+class YoutubeVideoState
 {
+public:
     using Seconds = int;
     //! maps property names to 0 based positions in a delimited string
     using StringPropertyMap = QMap<QString, QStringList::size_type>;
@@ -35,6 +36,7 @@ struct YoutubeVideoState
     YoutubeVideoState(const int state, const Seconds duration, const QString& url);
     YoutubeVideoState(const YoutubeVideoState& copyFrom);
     YoutubeVideoState(YoutubeVideoState&& moveFrom);
+    YoutubeVideoState& operator=(const YoutubeVideoState& copyAssignFrom);
 
     QString videoUrlAsString() const;
 
@@ -48,9 +50,13 @@ struct YoutubeVideoState
      */
     static YoutubeVideoState makeFromDelimitedString(const QString& data, const QChar delimiter, const StringPropertyMap& format = defaultMapping);
 
-    const IFrameVideoState PlayerState;
-    const Seconds PlayerDuration;
-    const QUrl VideoUrl;
+    IFrameVideoState PlayerState() const;
+    Seconds PlayerDuration() const;
+    const QUrl& VideoUrl() const;
+private:
+    IFrameVideoState _PlayerState;
+    Seconds _PlayerDuration;
+    QUrl _VideoUrl;
 };
 
 #endif // YOUTUBEVIDEOSTATE_H

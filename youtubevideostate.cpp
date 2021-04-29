@@ -1,33 +1,44 @@
 #include "youtubevideostate.h"
 
 YoutubeVideoState::YoutubeVideoState()
-    : PlayerState{IFrameVideoState::Unstarted}
-    , PlayerDuration{-1}
-    , VideoUrl{}
+    : _PlayerState{IFrameVideoState::Unstarted}
+    , _PlayerDuration{-1}
+    , _VideoUrl{}
 {}
 YoutubeVideoState::YoutubeVideoState(const IFrameVideoState state, const Seconds duration, const QString& url)
-    : PlayerState{state}
-    , PlayerDuration{duration}
-    , VideoUrl{QUrl::fromUserInput(url)}
+    : _PlayerState{state}
+    , _PlayerDuration{duration}
+    , _VideoUrl{QUrl::fromUserInput(url)}
 {}
 YoutubeVideoState::YoutubeVideoState(const int state, const Seconds duration, const QString& url)
-    : PlayerState{static_cast<IFrameVideoState>(state)}
-    , PlayerDuration{duration}
-    , VideoUrl{QUrl::fromUserInput(url)}
+    : _PlayerState{static_cast<IFrameVideoState>(state)}
+    , _PlayerDuration{duration}
+    , _VideoUrl{QUrl::fromUserInput(url)}
 {}
 YoutubeVideoState::YoutubeVideoState(const YoutubeVideoState& copyFrom)
-    : PlayerState{copyFrom.PlayerState}
-    , PlayerDuration{copyFrom.PlayerDuration}
-    , VideoUrl{copyFrom.VideoUrl}
+    : _PlayerState{copyFrom._PlayerState}
+    , _PlayerDuration{copyFrom._PlayerDuration}
+    , _VideoUrl{copyFrom._VideoUrl}
 {}
 YoutubeVideoState::YoutubeVideoState(YoutubeVideoState&& moveFrom)
-    : PlayerState{moveFrom.PlayerState}
-    , PlayerDuration{moveFrom.PlayerDuration}
-    , VideoUrl{std::move(moveFrom.VideoUrl)}
+    : _PlayerState{moveFrom._PlayerState}
+    , _PlayerDuration{moveFrom._PlayerDuration}
+    , _VideoUrl{std::move(moveFrom._VideoUrl)}
 {}
+
+YoutubeVideoState& YoutubeVideoState::operator=(const YoutubeVideoState &copyAssignFrom)
+{
+    if(this != &copyAssignFrom)
+    {
+        _PlayerState = copyAssignFrom._PlayerState;
+        _PlayerDuration = copyAssignFrom._PlayerDuration;
+        _VideoUrl = copyAssignFrom._VideoUrl;
+    }
+    return *this;
+}
 QString YoutubeVideoState::videoUrlAsString() const
 {
-    return VideoUrl.toString();
+    return _VideoUrl.toString();
 }
 
 const YoutubeVideoState::StringPropertyMap YoutubeVideoState::defaultMapping
@@ -57,4 +68,19 @@ YoutubeVideoState YoutubeVideoState::makeFromDelimitedString(const QString& data
     const QString& VideoUrl{getPropertyIndex("VideoUrl")};
 
     return YoutubeVideoState{PlayerState, Duration, VideoUrl};
+}
+
+IFrameVideoState YoutubeVideoState::PlayerState() const
+{
+    return _PlayerState;
+}
+
+YoutubeVideoState::Seconds YoutubeVideoState::PlayerDuration() const
+{
+    return _PlayerDuration;
+}
+
+const QUrl &YoutubeVideoState::VideoUrl() const
+{
+    return _VideoUrl;
 }

@@ -22,5 +22,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    YoutubeVideoState latestVideoState;
 };
 #endif // MAINWINDOW_H

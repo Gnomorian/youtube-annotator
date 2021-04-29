@@ -65,7 +65,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QListWidget" name="listAnnotations">
+          <widget class="AnnotationList" name="listAnnotations">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -99,6 +99,11 @@
    <extends>QWidget</extends>
    <header>youtubeplayer.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AnnotationList</class>
+   <extends>QListWidget</extends>
+   <header>annotationlist.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
