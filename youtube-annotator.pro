@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     annotationlist.cpp \
     annotationlistitem.cpp \
+    javascriptparambuilder.cpp \
     main.cpp \
     mainwindow.cpp \
     webpagefactory.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 HEADERS += \
     annotationlist.h \
     annotationlistitem.h \
+    javascriptparambuilder.h \
     mainwindow.h \
     webpagefactory.h \
     youtubeannotationstore.h \
@@ -39,4 +41,5 @@ RESOURCES += \
     webpagetemplates.qrc
 
 DISTFILES += \
-    concrete-youtube-player.html
+    concrete-youtube-player.html \
+    template-youtube-player.html
