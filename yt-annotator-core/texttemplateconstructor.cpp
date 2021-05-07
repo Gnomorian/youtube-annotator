@@ -2,7 +2,7 @@
 
 const QString TextTemplateConstructor::ParamFormat{"{{$%1}}"};
 
-TextTemplateConstructor::TextTemplateConstructor(const QString &templateStr)
+TextTemplateConstructor::TextTemplateConstructor(const QStringView templateStr)
     : templateStr{templateStr}
 {}
 
@@ -13,7 +13,7 @@ void TextTemplateConstructor::setSubstitution(const QString& paramName, const QS
 
 QString TextTemplateConstructor::realiseTemplate() const
 {
-    QString output{templateStr};
+    QString output{templateStr.toString()};
     for(const auto& [param, substitution] : substitutions)
     {
         output.replace(serializeParamName(param), substitution);

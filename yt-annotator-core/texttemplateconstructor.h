@@ -15,14 +15,14 @@ class YTANNOTATORCORE_EXPORT TextTemplateConstructor
 {
 public:
     //! \param templateStr will be stored as a reference, so you cant use this class if templateStr has been deleted.
-    explicit TextTemplateConstructor(const QString& templateStr);
+    explicit TextTemplateConstructor(const QStringView templateStr);
     TextTemplateConstructor() = delete;
     void setSubstitution(const QString& paramName, const QString& substitution);
     QString realiseTemplate() const;
 protected:
     QString serializeParamName(const QString& paramName) const;
 private:
-    const QString& templateStr{};
+    const QStringView templateStr{};
     std::map<QString, QString> substitutions{};
     const static QString ParamFormat;
 };
