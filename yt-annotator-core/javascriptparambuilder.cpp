@@ -1,5 +1,7 @@
 #include "javascriptparambuilder.h"
 
+const std::string JavascriptParamBuilder::ToStringErrorMessage {"parameter must be convertable to string"};
+
 JavascriptParamBuilder::JavascriptParamBuilder()
 {}
 
@@ -12,7 +14,7 @@ JavascriptParamBuilder &JavascriptParamBuilder::setMethodname(const QString &met
 JavascriptParamBuilder &JavascriptParamBuilder::addParam(const QVariant& param)
 {
     if(!param.canConvert<QString>())
-        throw std::exception{"parameter must be convertable to string"};
+        throw std::exception{ToStringErrorMessage.data()};
     paramlist.append(param);
     return *this;
 }
